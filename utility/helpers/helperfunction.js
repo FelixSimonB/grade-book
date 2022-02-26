@@ -34,3 +34,7 @@ export const ScrollTop = (props) => {
         </Zoom>
     )
 }
+
+export const getFullname = (firstname, lastname) => {
+    return `${firstname} ${lastname}`
+}

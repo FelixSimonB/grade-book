@@ -1,6 +1,31 @@
 export const MENU = {
-    pages: ['Home', 'Grades', 'Students', 'Teachers'],
-    settings: ['Profile', 'Settings', 'Logout']
+    pages: [
+        {
+            title: 'Home',
+            url: '/',
+            loginRequired: false
+        },
+        {
+            title: 'Students',
+            url: '/students',
+            loginRequired: true
+        },
+        {
+            title: 'Grades',
+            url: '/grades',
+            loginRequired: true
+        }
+    ],
+    settings: [
+        {
+            title: 'Profile',
+            url: '/profile'
+        },
+        {
+            title: 'Settings',
+            url: '/settings'
+        }
+    ]
 }
 
 export const LOGO = {

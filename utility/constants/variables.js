@@ -1,0 +1,1 @@
+export const API_URL = process.env.NEXT_PUBLIC_GRADE_BOOK_API_URL
