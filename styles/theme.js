@@ -156,6 +156,34 @@ const theme = createTheme({
                 fontSize: '2.5rem',
                 lineHeight: '46.92px'
             }
+        },
+        header: {
+            fontFamily: 'Calibri, sans-serif',
+            fontWeight: 'bold',
+            fontSize: '2.5rem',
+            lineHeight: '46.92px',
+            '@media (min-width:1280px)': {
+                fontSize: '3.627rem',
+                lineHeight: '66.093px'
+            },
+            '@media (min-width:1920px)': {
+                fontSize: '5.5rem',
+                lineHeight: '103.22px'
+            }
+        },
+        subHeader: {
+            fontFamily: 'Calibri, sans-serif',
+            fontWeight: 'bold',
+            fontSize: '1rem',
+            lineHeight: '28.15px',
+            '@media (min-width:1280px)': {
+                fontSize: '2.275rem',
+                lineHeight: '42.6335px'
+            },
+            '@media (min-width:1920px)': {
+                fontSize: '3.5rem',
+                lineHeight: '65.59px'
+            }
         }
     }
 })

@@ -1,5 +1,5 @@
 import App from 'next/app'
-import React from 'react'
+import React, { useState } from 'react'
 import Head from 'next/head'
 import store, {persistor} from '/reducers/store'
 import { Provider } from 'react-redux'
@@ -12,7 +12,8 @@ import {
     Fab
 } from '@mui/material'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
-import createEmotionCache from '../utility/createEmotionCache' 
+import createEmotionCache from '../utility/createEmotionCache'
+import NextNProgress from 'nextjs-progressbar'
 import { ScrollTop } from '../utility/helpers/helperfunction' 
 
 import theme from '/styles/theme'
@@ -23,6 +24,7 @@ const clientSideEmotionCache = createEmotionCache()
 
 const MainApp = (props) => {
     const { Component, appProps, emotionCache = clientSideEmotionCache } = props
+    const [status, setStatusBase] = useState(null)
 
     React.useEffect(() => {
             const jssStyles = document.querySelector('#jss-server-side')
@@ -43,8 +45,9 @@ const MainApp = (props) => {
                     loading={ <Loading bgColor='#ffff' iconColor = '#666666' /> }
                     persistor={ persistor }>
                     <CacheProvider value={emotionCache}>
-                        <ThemeProvider theme={ theme }>                                
-                            <CssBaseline />
+                        <NextNProgress color={'#6ab84f'}/>
+                        <CssBaseline />
+                        <ThemeProvider theme={ theme }>
                             <Navbar {...appProps}/>
                             <Toolbar id="back-to-top-anchor" sx={{
                                 visibility: 'hidden',
@@ -52,7 +55,8 @@ const MainApp = (props) => {
                                 left: '-9999px'
                             }} />
                             <div style={{ marginTop: '90px' }}>
-                                <Component {...appProps} />
+                                <Component {...appProps}/>
+                                {status ? <AlertMassage key={status.key} message={status.msg} /> : null}
                             </div>
                             <ScrollTop {...appProps}>
                                 <Fab color="secondary" size="large" aria-label="scroll back to top">
@@ -69,7 +73,6 @@ const MainApp = (props) => {
 
 MainApp.getInitialProps = async (appContext) => {
     const appProps = await App.getInitialProps(appContext)
-
     return { ...appProps }
 }
 

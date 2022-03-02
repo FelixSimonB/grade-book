@@ -1,7 +1,7 @@
 import { API_URL } from '/utility/constants/variables'
 
 export async function fetchPost(endpoint, body) {
-    const response = await fetch(API_URL + endpoint,{
+    const response = await fetch('http://localhost:3001' + endpoint,{
         method: 'POST',
         headers: {
             'Accept': 'application/json',
